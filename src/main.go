@@ -1,7 +1,6 @@
 package main
 
 import (
-	"LearnGo/src/deploy"
 	"LearnGo/src/test"
 	"fmt"
 
@@ -20,10 +19,10 @@ func (es *echoServer) React(frame []byte, c gnet.Conn) (out []byte, action gnet.
 func main() {
 	// echo := new(echoServer)
 	// log.Fatal(gnet.Serve(echo, "tcp://:9000", gnet.WithMulticore(true)))
-	utils := &deploy.DBUtils{}
-	utils.Open("wgp", "127.0.0.1", 3306, "root", "will")
-	results := utils.Query("select * from game")
-	fmt.Println(results)
+	// utils := &deploy.DBUtils{}
+	// utils.Open("wgp", "127.0.0.1", 3306, "root", "will")
+	// results := utils.Query("select * from game")
+	// fmt.Println(results)
 
 	// deploy.InstallServer(&deploy.IndexServer{})
 	// deploy.Startup(1234)
@@ -34,4 +33,8 @@ func main() {
 	fmt.Printf("value:%d", arr03[3])
 
 	test.TestSlice()
+	err := test.TestXml("test/servlet.xml")
+	if err != nil {
+		fmt.Println(err)
+	}
 }

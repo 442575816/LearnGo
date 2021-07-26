@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<servlet>
+    <init-param>
+        <props>
+            <property name="compress" type="bool">false</property>
+            <property name="sessionTimeout" type="int">100000</property>
+        </props>
+    </init-param>
+</servlet>
+    
