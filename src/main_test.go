@@ -1,9 +1,10 @@
-package main
+package main_test
 
 import (
 	"LearnGo/src/buffer"
 	"LearnGo/src/servlet"
-	//"LearnGo/src/test"
+	"testing"
+	"time"
 
 	//"fmt"
 	"strings"
@@ -81,7 +82,8 @@ func (m *MyServerHandler) InitConn(conn gnet.Conn) {
 	}
 }
 
-func main() {
+
+func TestTcp(t *testing.T) {
 	// echo := new(echoServer)
 	// log.Fatal(gnet.Serve(echo, "tcp://:9000", gnet.WithMulticore(true)))
 	// utils := &deploy.DBUtils{}
@@ -92,11 +94,14 @@ func main() {
 	// deploy.InstallServer(&deploy.IndexServer{})
 	// deploy.Startup(1234)
 
+	t.Run("tcp", func(t *testing.T) {
+		var handler MyServerHandler
 
 
-	var handler MyServerHandler
-
-
-	servlet.StartTcpServer(&handler)
-	//test.TestSlice()
+		go servlet.StartTcpServer(&handler)
+	})
+	t.Run("finish", func(t *testing.T) {
+		time.Sleep(time.Minute * 2)
+		t.FailNow()
+	})
 }
